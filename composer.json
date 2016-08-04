@@ -1,0 +1,29 @@
+{
+    "name": "larakit/lk-event",
+    "description": "[Larakit] Работа с событиями и слушателями на основе sfEvent",
+    "version": "5.0.0",
+    "keywords": [
+        "laravel",
+        "laravel 5",
+        "larakit"
+    ],	
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexey Berdnikov",
+            "email": "aberdnikov@gmail.com"
+        }
+    ],
+    "require": {
+        "larakit/lk-boot": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Larakit\\Event\\": "src/Event"
+        },
+        "files": [
+            "src/vendor/sfEvent.php",
+            "src/vendor/sfEventDispatcher.php"
+        ]
+    }
+}
