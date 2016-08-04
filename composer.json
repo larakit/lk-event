@@ -3,8 +3,8 @@
     "description": "[Larakit] Работа с событиями и слушателями на основе sfEvent",
     "version": "5.0.0",
     "keywords": [
-        "laravel",
         "laravel 5",
+        "laravel",
         "larakit"
     ],	
     "license": "MIT",
