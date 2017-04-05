@@ -41,7 +41,7 @@ class CommandEvent extends Command {
      * @return mixed
      */
     public function fire() {
-        $this->info('123');
+        $this->table([],Event::events());
     }
     
 }
