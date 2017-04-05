@@ -22,6 +22,7 @@
             "Larakit\\Event\\": "src/Event"
         },
         "files": [
+            "src/init.php",
             "src/vendor/sfEvent.php",
             "src/vendor/sfEventDispatcher.php"
         ]
