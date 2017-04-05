@@ -10,14 +10,14 @@ class CommandEvent extends Command {
      *
      * @var string
      */
-    protected $name = 'larakit:settings:event';
+    protected $name = 'larakit:show:event';
     
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'События';
+    protected $description = 'Показать все зарегистрированные события';
     
     /**
      * Пусть для сохранения сгенерированных данных
@@ -41,7 +41,7 @@ class CommandEvent extends Command {
      * @return mixed
      */
     public function fire() {
-        $this->table([],Event::events());
+        $this->table(['Event Name', 'File', 'Line', 'Description',], Event::events());
     }
     
 }

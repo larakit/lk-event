@@ -1,6 +1,8 @@
 <?php
 namespace Larakit\Event;
 
+use Illuminate\Support\Arr;
+
 class Event {
     
     protected static $dispatcher = null;
@@ -33,10 +35,24 @@ class Event {
      * @param null  $subject
      */
     static function notify($event_name, $parameters = [], $subject = null, $desc = null) {
-        self::$events[$event_name] = $desc ? $desc : $event_name;
-        $event                     = new \sfEvent($subject, $event_name, $parameters);
+        self::register($event_name, $desc);
+        $event = new \sfEvent($subject, $event_name, $parameters);
         self::dispatcher()
             ->notify($event);
+    }
+    
+    static protected function register($event_name, $desc) {
+        $item = Arr::get(debug_backtrace(), 1);
+        $file = Arr::get($item, 'file');
+        $file = str_replace('\\', '/', $file);
+        $file = str_replace(base_path() . '/', '', $file);
+        $line = Arr::get($item, 'line');
+        self::$events[$event_name] = [
+            $event_name,
+            $file,
+            $line,
+            $desc,
+        ];
     }
     
     /**
@@ -78,12 +94,7 @@ class Event {
     }
     
     static function events() {
-        $ret = [];
-        foreach(self::$events as $event_name => $desc) {
-            $ret[] = [$event_name, $desc];
-        }
-        
-        return $ret;
+        return array_values(self::$events);
     }
     
 }
